@@ -1,0 +1,17 @@
+---
+mxml_path: src/<%= app_name %>.mxml
+
+src_dirs: [ 'src' ]
+lib_dir: lib
+
+swf_path: bin/<%= app_name %>.swf
+assets: src/assets
+
+development:
+  debug: true
+
+test:
+  swf_path: bin/Test.swf
+  mxml_path: test/Test.mxml
+  src_dirs: [ 'src', 'test' ]
+  debug: true

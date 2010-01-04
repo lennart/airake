@@ -47,7 +47,7 @@ end
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-hoe = Hoe.new(GEM_NAME, VERS) do |p|
+hoe = Hoe.spec GEM_NAME do |p|
   p.author = AUTHOR 
   p.description = DESCRIPTION
   p.email = EMAIL
@@ -56,6 +56,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs = ["test/**/test_*.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
+  p.readme_file = "README.md"
   
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\\n\\n")
