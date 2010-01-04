@@ -23,13 +23,13 @@ module Airake
       # * adt_extra_opts
       # * adl_extra_opts
       #            
-      def load(options = {})
-        super(options)
+      def load(options = { :conf_name => "airake" })
+        super(nil, nil, options)
         
         @air_path = File.join(base_dir, options[:air_path])      
         @mxml_path = File.join(base_dir, options[:mxml_path])      
         @appxml_path = File.join(base_dir, options[:appxml_path])
-        @conf_name = "airake"
+        @conf_name = options[:conf_name]
         
         with_keyed_options([ :assets, :certificate, :mxmlc_path, :adt_path, :adl_path, :asdoc_path, 
           :mxmlc_extra_opts, :adt_extra_opts, :adl_extra_opts, :asdoc_extra_opts ], options)

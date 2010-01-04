@@ -45,7 +45,7 @@ class FlexrakeGenerator < RubiGen::Base
       m.file "test/suite/AllTests.as", "test/suite/AllTests.as"      
 
       m.template "../flexrake/templates/Rakefile", "Rakefile"
-      m.template "application.mxml", "src/#{app_name}.mxml"
+      m.template "../flexrake/templates/application.mxml", "src/#{app_name}.mxml"
       m.template "flexrake.yml", "flexrake.yml"
 
       # Icons

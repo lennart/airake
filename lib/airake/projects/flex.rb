@@ -18,16 +18,20 @@ module Airake
       # - +certificate+: Path to certificate      
       #
       #            
+      
+      def initialize env = nil,base_dir = nil, options = { :conf_name => "flexrake" }
+        super env, base_dir, options
+      end
+
       def load(options = {})
-        super(options)
+        super options
         
         @mxml_path = File.join(base_dir, options[:mxml_path])      
-        @conf_name = "flexrake"
         
         with_keyed_options([ :assets, :mxmlc_path, :adt_path, :asdoc_path, 
           :mxmlc_extra_opts, :asdoc_extra_opts ], options)
 
-        ensure_exists([ @mxml_path, @conf_name ])
+        ensure_exists([ @mxml_path ])
       end      
       
       # Flex compiler command (under AIR) for this project

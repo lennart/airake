@@ -5,7 +5,7 @@ module Airake #:nodoc:
     # MXMLC (MXML compiler)
     class Mxmlc < Base
       
-      attr_reader :mxmlc_path, :mxmlc_extra_opts, :swf_path, :target_file, :lib_dir, :src_dirs, :debug
+      attr_reader :mxmlc_path, :mxmlc_extra_opts, :swf_path, :target_file, :lib_dir, :src_dirs, :debug, :incremental
       attr_reader :config_name
       
       # Create MXMLC command.
@@ -38,6 +38,7 @@ module Airake #:nodoc:
         command << @mxmlc_extra_opts
         command << "-source-path #{@source_paths.join(" ")}"
         command << "-library-path+=#{@library_path}" unless @library_path.blank?
+        command << "-incremental=#{@incremental}" unless @incremental.nil?
         command << "-output"
         command << escape(@swf_path)
         command << "-debug=#{@debug}" unless @debug.nil?        

@@ -28,9 +28,8 @@ module Airake
       raise "Need to specify an AIRAKE_ROOT (project root)" if base_dir.blank?
       
       @base_dir = base_dir      
-      
-      if options.nil?
-        conf_path = File.join(base_dir, "#{options[:conf_name]}.yml")
+      conf_path = File.join(base_dir, "#{options.delete :conf_name}.yml")
+      if options.nil? || options.empty?
         unless File.exist?(conf_path)
           raise <<-EOS 
         
@@ -40,8 +39,7 @@ module Airake
           
           EOS
         end
-        
-        options = YAML.load_file(File.join(@base_dir, "airake.yml"))
+        options = YAML.load_file(conf_path)
         env_options = options[@env]
         options = options.merge(env_options) if env_options
         options.symbolize_keys!
