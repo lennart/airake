@@ -30,7 +30,7 @@ module Airake
       @base_dir = base_dir      
       
       if options.nil?
-        conf_path = File.join(base_dir, "airake.yml")
+        conf_path = File.join(base_dir, "#{options[:conf_name]}.yml")
         unless File.exist?(conf_path)
           raise <<-EOS 
         

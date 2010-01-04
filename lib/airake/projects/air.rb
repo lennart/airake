@@ -6,7 +6,7 @@ module Airake
     class Air < Airake::Project
       
       attr_reader :mxml_path, :appxml_path, :air_path
-      attr_reader :assets, :certificate          
+      attr_reader :assets, :certificate, :conf_name
       
       # Load options
       #
@@ -29,11 +29,12 @@ module Airake
         @air_path = File.join(base_dir, options[:air_path])      
         @mxml_path = File.join(base_dir, options[:mxml_path])      
         @appxml_path = File.join(base_dir, options[:appxml_path])
+        @conf_name = "airake"
         
         with_keyed_options([ :assets, :certificate, :mxmlc_path, :adt_path, :adl_path, :asdoc_path, 
           :mxmlc_extra_opts, :adt_extra_opts, :adl_extra_opts, :asdoc_extra_opts ], options)
 
-        ensure_exists([ @mxml_path, @appxml_path ])
+        ensure_exists([ @mxml_path, @appxml_path, @conf_name ])
       end      
       
       # Flex compiler command (under AIR) for this project
